@@ -1,0 +1,1 @@
+Simple backtracking algorithm test for solving sudoku puzzles. Was reading about it in an article and thought it'd be fun to write one up.
