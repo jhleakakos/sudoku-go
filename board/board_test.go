@@ -163,3 +163,44 @@ func TestCheckIsValidSquare(t *testing.T) {
 		t.Error("bad square with a 10 returning valid")
 	}
 }
+
+func TestCheckIsValidGrid(t *testing.T) {
+	goodBoard := Board{
+		Grid: [9][9]int{
+			{8, 7, 1, 5, 6, 9, 3, 2, 4},
+			{4, 3, 9, 7, 2, 8, 1, 6, 5},
+			{6, 2, 5, 4, 3, 1, 9, 8, 7},
+			{5, 8, 4, 1, 7, 2, 6, 3, 9},
+			{2, 9, 7, 3, 8, 6, 4, 5, 1},
+			{3, 1, 6, 9, 4, 5, 8, 7, 2},
+			{7, 5, 8, 6, 1, 4, 2, 9, 3},
+			{9, 4, 2, 8, 5, 3, 7, 1, 6},
+			{1, 6, 3, 2, 9, 7, 5, 4, 8},
+		},
+	}
+
+	expected := goodBoard.CheckIsValidGrid()
+	if !expected {
+		t.Error("CheckIsValid() returns false for valid board")
+	}
+
+	// has a 0 in the final square
+	badBoard := Board{
+		Grid: [9][9]int{
+			{8, 7, 1, 5, 6, 9, 3, 2, 4},
+			{4, 3, 9, 7, 2, 8, 1, 6, 5},
+			{6, 2, 5, 4, 3, 1, 9, 8, 7},
+			{5, 8, 4, 1, 7, 2, 6, 3, 9},
+			{2, 9, 7, 3, 8, 6, 4, 5, 1},
+			{3, 1, 6, 9, 4, 5, 8, 7, 2},
+			{7, 5, 8, 6, 1, 4, 2, 9, 3},
+			{9, 4, 2, 8, 5, 3, 0, 1, 6},
+			{1, 6, 3, 2, 9, 7, 5, 4, 8},
+		},
+	}
+
+	expected = badBoard.CheckIsValidGrid()
+	if expected {
+		t.Error("CheckIsValid() returns true for invalid board")
+	}
+}

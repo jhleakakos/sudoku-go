@@ -116,3 +116,16 @@ func (b *Board) CheckIsValidSquare(square int) bool {
 
 	return true
 }
+
+func (b *Board) CheckIsValidGrid() bool {
+	for n := 0; n < 9; n++ {
+		if !b.CheckIsValidRow(n) ||
+			!b.CheckIsValidColumn(n) ||
+			!b.CheckIsValidSquare(n+1) {
+
+			return false
+		}
+	}
+
+	return true
+}
