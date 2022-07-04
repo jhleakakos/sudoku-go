@@ -39,3 +39,43 @@ func TestGetBoard(t *testing.T) {
 		t.Error("Problem with printed board matching GetBoard() output")
 	}
 }
+
+func TestCheckIsValidRow(t *testing.T) {
+	// first row is valid
+	// second row is invalid because of two 9s
+	// third row is invalid because it has a 0
+	// fourth row is invalid because it has a 10
+	testBoard := Board{
+		Grid: [9][9]int{
+			{8, 7, 1, 5, 6, 9, 3, 2, 4},
+			{9, 7, 1, 5, 6, 9, 3, 2, 4},
+			{6, 2, 5, 4, 0, 1, 9, 8, 7},
+			{5, 8, 4, 1, 7, 10, 6, 3, 9},
+			{2, 9, 7, 3, 8, 6, 4, 5, 1},
+			{3, 1, 6, 9, 4, 5, 8, 7, 2},
+			{7, 5, 8, 6, 1, 4, 2, 9, 3},
+			{9, 4, 2, 8, 5, 3, 7, 1, 6},
+			{1, 6, 3, 2, 9, 7, 5, 4, 8},
+		},
+	}
+
+	expected := testBoard.CheckIsValidRow(0)
+	if !expected {
+		t.Error("good row returning invalid")
+	}
+
+	expected = testBoard.CheckIsValidRow(1)
+	if expected {
+		t.Error("bad row with duplicate numbers returning valid")
+	}
+
+	expected = testBoard.CheckIsValidRow(2)
+	if expected {
+		t.Error("bad row with a 0 returning valid")
+	}
+
+	expected = testBoard.CheckIsValidRow(3)
+	if expected {
+		t.Error("bad row with a 10 returning valid")
+	}
+}
