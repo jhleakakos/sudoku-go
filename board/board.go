@@ -50,3 +50,28 @@ func (b *Board) CheckIsValidRow(row int) bool {
 
 	return true
 }
+
+func (b *Board) CheckIsValidColumn(col int) bool {
+	colValues := map[int]bool{
+		1: false,
+		2: false,
+		3: false,
+		4: false,
+		5: false,
+		6: false,
+		7: false,
+		8: false,
+		9: false,
+	}
+
+	for _, row := range b.Grid {
+		if row[col] < 1 || row[col] > 9 || colValues[row[col]] == true {
+			return false
+		}
+
+		colValues[row[col]] = true
+	}
+
+	return true
+
+}
