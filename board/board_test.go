@@ -79,3 +79,43 @@ func TestCheckIsValidRow(t *testing.T) {
 		t.Error("bad row with a 10 returning valid")
 	}
 }
+
+func TestCheckIsValidColumn(t *testing.T) {
+	// first column is valid
+	// second column is invalid because of two 9s
+	// third column is invalid because it has a 0
+	// fourth column is invalid because it has a 10
+	testBoard := Board{
+		Grid: [9][9]int{
+			{8, 9, 1, 5, 6, 9, 3, 2, 4},
+			{4, 3, 9, 7, 2, 8, 1, 6, 5},
+			{6, 2, 5, 4, 3, 1, 9, 8, 7},
+			{5, 8, 4, 1, 7, 2, 6, 3, 9},
+			{2, 9, 0, 3, 8, 6, 4, 5, 1},
+			{3, 1, 6, 9, 4, 5, 8, 7, 2},
+			{7, 5, 8, 6, 1, 4, 2, 9, 3},
+			{9, 4, 2, 10, 5, 3, 7, 1, 6},
+			{1, 6, 3, 2, 9, 7, 5, 4, 8},
+		},
+	}
+
+	expected := testBoard.CheckIsValidColumn(0)
+	if !expected {
+		t.Error("good column returning invalid")
+	}
+
+	expected = testBoard.CheckIsValidColumn(1)
+	if expected {
+		t.Error("bad row with duplicate numbers returning valid")
+	}
+
+	expected = testBoard.CheckIsValidColumn(2)
+	if expected {
+		t.Error("bad row with a 0 returning valid")
+	}
+
+	expected = testBoard.CheckIsValidColumn(3)
+	if expected {
+		t.Error("bad row with a 10 returning valid")
+	}
+}
