@@ -150,16 +150,16 @@ func TestCheckIsValidSquare(t *testing.T) {
 
 	expected = testBoard.CheckIsValidSquare(2)
 	if expected {
-		t.Error("bad row with duplicate numbers returning valid")
+		t.Error("bad square with duplicate numbers returning valid")
 	}
 
-	expected = testBoard.CheckIsValidSquare(3)
+	expected = testBoard.CheckIsValidSquare(2)
 	if expected {
-		t.Error("bad row with a 0 returning valid")
+		t.Error("bad square with a 0 returning valid")
 	}
 
 	expected = testBoard.CheckIsValidSquare(4)
 	if expected {
-		t.Error("bad row with a 10 returning valid")
+		t.Error("bad square with a 10 returning valid")
 	}
 }
